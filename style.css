@@ -1,0 +1,153 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+:root {
+    --bg: #1a1f25;
+    --bg_button: #e6b333;
+    --color_border: #22272d;
+    --color_text: #e6b333;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--bg);
+}
+
+#header-text {
+    display: flex;
+    flex-direction: column;
+    color: var(--color_text);
+    font-family: 'Roboto';
+    margin-top: 2em;
+    text-align: center;
+    gap: 5px;
+}
+
+#create_user {
+    background-color: var(--bg_button);
+    color: var(--bg);
+    width: 5%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Roboto";
+    height: 1.7em;
+}
+
+#create_list {
+    background-color: var(--bg_button);
+    color: var(--bg);
+    width: 5%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Roboto";
+    height: 1.7em;
+}
+
+#sign_in {
+    background-color: var(--bg_button);
+    color: var(--bg);
+    width: 6%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Roboto";
+    height: 1.7em;
+}
+
+#sign_out {
+    background-color: var(--bg_button);
+    color: var(--bg);
+    width: 8%;
+    height: 1.4em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Roboto";
+    height: 1.7em;
+    margin-top: 5px;
+}
+
+#text_name_user {
+    background-color: var(--bg);
+    color: var(--color_text);
+    border-radius: 5px;
+    border: 1px solid var(--color_border);
+    text-align: center;
+    outline: none;
+    height: 1.7em;
+}
+
+#toDo_headline {
+    background-color: var(--bg);
+    color: var(--color_text);
+    border-radius: 5px;
+    border: 1px solid var(--color_border);
+    text-align: center;
+    outline: none;
+    height: 1.7em;
+}
+
+
+#text_name_user:focus {
+    border: 1px solid var(--color_text);
+    color: var(--color_text);
+}
+
+#toDo_headline:focus {
+    border: 1px solid var(--color_text);
+    color: var(--color_text);
+}
+
+#main {
+    color: var(--color_text);
+    font-family: 'Roboto';
+    margin-top: 2em;
+    text-align: center;
+}
+
+#visual_add {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.todo-container {
+    width: 200px;
+    height: 300px;
+    padding: 20px;
+    background-color: var(--bg_button);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: var(--color_border);
+    font-family: 'Roboto';
+    position: relative;
+  }
+
+#main_list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+#remove_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--bg);
+    border: none;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+
