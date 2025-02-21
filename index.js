@@ -1,8 +1,6 @@
 class Task {
-    constructor (title, description, date) {
+    constructor (title) {
         this.title = title;
-        this.description = description;
-         this.date = new Date(date);
         this.isCompleted = false;
     }
 
@@ -150,32 +148,52 @@ function addVisual() {
 }
 
 function create_new_container() {
-    const check_list = document.getElementById('main_list');
-    back.setToken(user_name.value);
-    if (!check_list) {
-        const list = document.createElement('div');
-        list.id = 'main_list';
-        main.appendChild(list);
-    }
-    const new_list_visual = document.createElement('div');
-    new_list_visual.classList.add('todo-container');
-    const list = document.getElementById('main_list');
-    list.appendChild(new_list_visual);
-    const text_headline_visual = document.createElement('header');
     const toDo_headline = document.getElementById('toDo_headline');
-    let new_toDoList = new toDoList(toDo_headline.value);
-    text_headline_visual.innerText = new_toDoList.getHeadline();
-    new_list_visual.appendChild(text_headline_visual);
-    const remove_btn = document.createElement('button');
-    remove_btn.id = 'remove_btn';
-    new_list_visual.appendChild(remove_btn);
-    toDo_headline.value = '';
-    let user = new User(back.getNameToDoList());
-    user.list = back.getToDoList();;
-    new_list_visual.setAttribute('remove', user.list.length);
-    user.addList(new_toDoList);
-    back.setUserEqToken(user);
-    back.setUpdateUser();
+    if (toDo_headline.value != '') {
+        const check_list = document.getElementById('main_list');
+    back.setToken(user_name.value);
+        if (!check_list) {
+            const list = document.createElement('div');
+            list.id = 'main_list';
+            main.appendChild(list);
+        }
+        const new_list_visual = document.createElement('div');
+        new_list_visual.classList.add('todo-container');
+        const list = document.getElementById('main_list');
+        list.appendChild(new_list_visual);
+        const text_headline_visual = document.createElement('header');
+        let new_toDoList = new toDoList(toDo_headline.value);
+        text_headline_visual.innerText = new_toDoList.getHeadline();
+        new_list_visual.appendChild(text_headline_visual);
+        // task
+        const block_about_task = document.createElement('div');
+        block_about_task.id = 'block_about_task';
+        new_list_visual.appendChild(block_about_task);
+        const input_task = document.createElement('input');
+        input_task.classList.add('input_task');
+        block_about_task.appendChild(input_task);
+        input_task.placeholder = 'Write your task...'
+        const create_task = document.createElement('button');
+        create_task.id = 'create_task';
+        create_task.innerText = 'Create';
+        block_about_task.appendChild(create_task);
+        create_task.addEventListener('click', create_new_task);
+        // task
+        // remove_btn
+        const remove_btn = document.createElement('button');
+        remove_btn.id = 'remove_btn';
+        new_list_visual.appendChild(remove_btn);
+        toDo_headline.value = '';
+        let user = new User(back.getNameToDoList());
+        user.list = back.getToDoList();;
+        new_list_visual.setAttribute('remove', user.list.length);
+        const deleteButtons = document.querySelectorAll('#remove_btn');
+        deleteButtons.forEach(button => button.addEventListener('click', remove_toDoList));
+        // remove_btn
+        user.addList(new_toDoList);
+        back.setUserEqToken(user);
+        back.setUpdateUser();
+    }   
 }
 
 function getListFromStorage() {
@@ -208,6 +226,20 @@ function createListContainerFromStorage() {
         remove_btn.id = 'remove_btn';
         new_list_visual.appendChild(remove_btn);
         new_list_visual.setAttribute('remove', index);
+        // task
+        const block_about_task = document.createElement('div');
+        block_about_task.id = 'block_about_task';
+        new_list_visual.appendChild(block_about_task);
+        const input_task = document.createElement('input');
+        input_task.classList.add('input_task');
+        block_about_task.appendChild(input_task);
+        input_task.placeholder = 'Write your task...'
+        const create_task = document.createElement('button');
+        create_task.id = 'create_task';
+        create_task.innerText = 'Create';
+        block_about_task.appendChild(create_task);
+        create_task.addEventListener('click', create_new_task);
+        // task
     }
     const deleteButtons = document.querySelectorAll('#remove_btn');
     deleteButtons.forEach(button => button.addEventListener('click', remove_toDoList));
@@ -217,7 +249,6 @@ function remove_toDoList() {
     back.setToken(user_name.value);
     const remove_list = this.parentElement;
     const remove_index = remove_list.getAttribute('remove');
-    console.log(remove_index);
     let list = back.getToDoList();
     list.splice(remove_index,1);
     let user = new User(back.getNameToDoList());
@@ -229,9 +260,30 @@ function remove_toDoList() {
     getListFromStorage();
 }
 
-function visual_add() {
+function create_new_task() {
+    // back
+    const input_task = document.getElementsByClassName('input_task');
+    const task = Array.from(input_task).find(input => input.value != '');
+    back.setToken(user_name.value);
+    let new_task = new Task(task.value);
+    const parent_list = (this.parentElement).parentElement;
+    const parent_list_index = parent_list.getAttribute('remove');
+    let user = new User(back.getNameToDoList());
+    let list = back.getToDoList();
+    user.list = list;
+    user.list[parent_list_index].tasks.push(new_task);
+    back.setUserEqToken(user);
+    back.setUpdateUser();
+    task.value = '';
+    //back
+    // visual task
+    
+    // visual task
 
 }
+
+
+
 
 
 

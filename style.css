@@ -150,4 +150,30 @@ body {
     height: 30px;
 }
 
+.input_task {
+    background-color: var(--bg);
+    color: var(--color_text);
+    border-radius: 5px;
+    border: 1px solid var(--color_border);
+    text-align: center;
+    outline: none;
+    height: 1.7em;
+    width: 70%;
+}
+
+#block_about_task {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#create_task {
+    width: 30%;
+    background-color: var(--bg);
+    color: var(--color_text);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
