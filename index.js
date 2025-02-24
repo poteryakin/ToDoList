@@ -238,7 +238,16 @@ function createListContainerFromStorage() {
         create_task.id = 'create_task';
         create_task.innerText = 'Create';
         block_about_task.appendChild(create_task);
+        const task_list = document.createElement('ul');
+        task_list.id = 'task_list';
+        new_list_visual.appendChild(task_list);
+        for (let i = 0; i < lists_back[index].tasks.length; i++) {
+            const new_task_on_list = document.createElement('li');
+            new_task_on_list.innerText = lists_back[index].tasks[i].title;
+            task_list.appendChild(new_task_on_list);
+        }
         create_task.addEventListener('click', create_new_task);
+
         // task
     }
     const deleteButtons = document.querySelectorAll('#remove_btn');
@@ -272,13 +281,25 @@ function create_new_task() {
     let list = back.getToDoList();
     user.list = list;
     user.list[parent_list_index].tasks.push(new_task);
+    //back
+    // visual task
+    const check_task_list = document.getElementById('task_list')
+    if (!check_task_list) {
+        const task_list = document.createElement('ul');
+        task_list.id = 'task_list';
+        parent_list.appendChild(task_list);
+    }
+    const task_list = document.getElementById('task_list');
+    const new_task_on_list = document.createElement('li');
+    task_list.appendChild(new_task_on_list);
+    new_task_on_list.innerText = task.value;
+    // visual task
     back.setUserEqToken(user);
     back.setUpdateUser();
     task.value = '';
-    //back
-    // visual task
-    
-    // visual task
+}
+
+function getTaskFromSrotage() {
 
 }
 

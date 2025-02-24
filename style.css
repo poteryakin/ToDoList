@@ -126,6 +126,7 @@ body {
     color: var(--color_border);
     font-family: 'Roboto';
     position: relative;
+    overflow: auto;
   }
 
 #main_list {
@@ -176,4 +177,21 @@ body {
     cursor: pointer;
 }
 
+#task_list {
+    margin-bottom: 5px;
+
+}
+
+#button_complete {
+    width: 30%;
+    background-color: var(--bg);
+    color: var(--color_text);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#task {
+    display: flex;
+    flex-direction: row;
+}
 
